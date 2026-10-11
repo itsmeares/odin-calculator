@@ -12,7 +12,7 @@ The last project of foundations course in The Odin Project!
 2. three variables:
 number, operator, number => e.g. (3 + 5)
 
-3. function operate(x, y) takes an operator and two numbers and calls the basic func (add, subtract etc.)
+3. function operate(operator, x, y) takes an operator and two numbers and calls the basic func (add, subtract etc.)
 
 4. basic html with buttons for each digit, operator and execute (=)
 
