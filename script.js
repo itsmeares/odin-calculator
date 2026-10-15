@@ -29,3 +29,10 @@ function operate(operator, x, y) {
         divide(x, y);
     } else return console.log("Hmm... I wonder what you are trying to do.");
 }
+
+// function update num vars when calc buttons are clicked
+// display should also update to reflect new variable.
+
+// function updateNums() {
+
+// }
