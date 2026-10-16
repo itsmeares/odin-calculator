@@ -3,13 +3,6 @@ The last project of foundations course in The Odin Project!
 
 ## To-do
 
-5. create the function that updates the number variables when calculator buttons are clicked, display should also upadte to reflect the variable.
-
-6. store the first and second number input by the user and operate() on them when user presses "=". 
-
-- once operate is called update the display with result.
-- this is hardest part of this project: figure out how to store all the values and call the operate() with them, don't feel bad if it takes you a while to figure out.
-
 7. gotchas: watch out.
 
 - shouldn't evaluate more than single pair. example function:
@@ -45,6 +38,14 @@ number, operator, number => e.g. (3 + 5)
 - Don’t worry about making them functional just yet.
 - There should also be a display for the calculator. Go ahead and fill it with some dummy numbers so it looks correct.
 - Add a “clear” button.
+
+5. create the function that updates the number variables when calculator buttons are clicked, display should also update to reflect the variable.
+
+6. store the first and second number input by the user and operate() on them when user presses "=". 
+
+- once operate is called update the display with result.
+- this is hardest part of this project: figure out how to store all the values and call the operate() with them, don't feel bad if it takes you a while to figure out.
+
 
 ### Extra Credit
 - Users can get floating point numbers if they do the math required to get one, but they can’t type them in yet. Add a . button and let users input decimals! Make sure you don’t let them type more than one though, like: 12.3.56.5. Disable the . button if there’s already a decimal separator in the display.

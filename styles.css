@@ -52,8 +52,13 @@ button {
     font-size: 28px;
     width: 60px;
     height: 70px;
+    cursor: pointer;
 }
 
-button:hover {
+button:active {
     background-color: #808080;
+}
+
+.selected {
+    background-color: #4e3535;
 }
