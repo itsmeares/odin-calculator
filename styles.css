@@ -19,13 +19,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .calc__container {
     background-color: #141414;
     padding: 16px;
-    border-radius: 6px;
+    border-radius: 8px;
 
     display: flex;
     flex-direction: column;
@@ -34,13 +33,27 @@ body {
 
 .calc__screen {
     background-color: #505050;
-    height: 50px;
+    height: 70px;
     padding: 16px;
-    border-radius: 2px;
-
-    font-size: 22px;
+    border-radius: 8px;
 
     display: flex;
-    text-align: left;
     align-items: center;    
+}
+
+.calc__result {
+    font-size: 32px;
+}
+
+button {
+    background-color: #505050;
+    color: white;
+    border: none;
+    font-size: 28px;
+    width: 60px;
+    height: 70px;
+}
+
+button:hover {
+    background-color: #808080;
 }
