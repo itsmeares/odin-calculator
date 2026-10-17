@@ -1,12 +1,42 @@
-let nums = [];
-let operator = null;
+let currentNumber = [];
+let previousNumber = [];
 
-const calcResult = document.querySelector(".calc__result");
+const matchScreen = () => {
+  calcActive.textContent = currentNumber.join("");
+};
+
+const changeSymbol = () => {
+  if (!currentNumber.includes("-")) {
+    currentNumber.unshift("-");
+  } else if (currentNumber.includes("-")) {
+    currentNumber.shift();
+  }
+};
+
+const allClear = () => {
+  currentNumber = [];
+  previousNumber = [];
+  matchScreen();
+};
+
+const toDecimalPlace = () => {
+  if (!currentNumber.includes(".")) {
+    currentNumber.push(".");
+  } else if (currentNumber.includes(".")) {
+    currentNumber.pop();
+  }
+};
+
+const calcActive = document.querySelector(".calc__active");
 const buttons = document.querySelectorAll(".calc__button");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const functions = document.querySelectorAll(".function");
 
 function add(x, y) {
   return x + y;
 }
+
 function subtract(x, y) {
   return x - y;
 }
@@ -21,51 +51,50 @@ function divide(x, y) {
 
 function operate(operator, x, y) {
   if (operator === "+") {
-    return (calcResult.textContent = add(x, y));
+    return (calcActive.textContent = add(x, y));
   } else if (operator === "-") {
-    return (calcResult.textContent = subtract(x, y));
+    return (calcActive.textContent = subtract(x, y));
   } else if (operator === "x") {
-    return (calcResult.textContent = multiply(x, y));
+    return (calcActive.textContent = multiply(x, y));
   } else if (operator === "/") {
-    return (calcResult.textContent = divide(x, y));
+    return (calcActive.textContent = divide(x, y));
   } else return console.log("Something went wrong.");
 }
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.textContent === "AC") {
-      calcResult.textContent = "";
-      nums = [];
-      operator = null;
-    } else if (button.textContent >= 0) {
-      calcResult.textContent += button.textContent;
+    if (button.classList.contains("number")) {
+      currentNumber.push(+button.textContent);
+      matchScreen();
     }
 
-    if (
-      (button.textContent === "x" && nums.length < 1) ||
-      (button.textContent === "/" && nums.length < 1) ||
-      (button.textContent === "+" && nums.length < 1) ||
-      (button.textContent === "-" && nums.length < 1)
-    ) {
-      operator = button.textContent;
-      nums.push(+calcResult.textContent);
-      calcResult.textContent = "";
-    } else if (
-      (button.textContent === "x" && nums.length === 1) ||
-      (button.textContent === "/" && nums.length === 1) ||
-      (button.textContent === "+" && nums.length === 1) ||
-      (button.textContent === "-" && nums.length === 1) ||
-      (button.textContent === "=" && nums.length === 1)
-    ) {
-      nums.push(+calcResult.textContent);
-      calcResult.textContent = "";
-      operate(operator, nums[0], nums[1]);
-      nums = [];
-      operator = null;
+    if (button.classList.contains("operator")) {
+      if (
+        button.id === "multiply" ||
+        button.id === "divide" ||
+        button.id === "add" ||
+        button.id === "subtract"
+      ) {
+        // todo
+      }
+    }
+
+    if (button.classList.contains("function")) {
+      if (button.id === "allclear") {
+        allClear();
+      } else if (button.id === "clear") {
+        currentNumber = [];
+        matchScreen();
+      } else if (button.id === "back") {
+        currentNumber.pop(0, -1);
+        matchScreen();
+      } else if (button.id === "negative") {
+        changeSymbol();
+        matchScreen();
+      } else if (button.id === "decimal") {
+        toDecimalPlace();
+        matchScreen();
+      }
     }
   });
 });
-
-// Focus on this as next:
-//
-// enter second operator (-), at this point it should evaluate the inital pair (12 + 7), then display the result 19.

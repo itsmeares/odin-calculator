@@ -32,31 +32,56 @@ body {
 }
 
 .calc__screen {
-  background-color: #505050;
-  height: 70px;
+  background-color: #252525;
+  height: 100px;
   padding: 16px;
+  margin: 0 6px;
   border-radius: 8px;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.calc__active {
+  align-self: end;
+  font-size: 28px;
 }
 
 .calc__result {
-  font-size: 32px;
+  align-self: end;
+  font-size: 20px;
+  color: #808080;
 }
 
 button {
-  background-color: #505050;
+  background-color: #353535;
   color: white;
   border: none;
+  border-radius: 6px;
   font-size: 28px;
   width: 60px;
   height: 70px;
   cursor: pointer;
 }
 
+button:hover {
+  opacity: 0.5;
+}
+
 button:active {
-  background-color: #808080;
+  opacity: 1;
+}
+
+.function {
+  background-color: #505050;
+}
+
+.operator {
+  background-color: #e67b00;
+}
+
+table {
+  border-spacing: 4px 6px;
 }
 
 .selected {
