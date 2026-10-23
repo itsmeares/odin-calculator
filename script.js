@@ -158,7 +158,9 @@ buttons.forEach((button) => {
           updateResult();
         } else if (activeEquation.length == 2) {
           if (currentNumber.length === 0) {
-            return (error.textContent = "Enter an operand.");
+            activeOperator = button.id;
+            activeEquation[1] = activeOperator;
+            updateResult();
           } else if (currentNumber.length > 0) {
             activeEquation.push(+currentNumber.join(""));
             activeOperator = button.id;
