@@ -10,6 +10,7 @@ const buttons = document.querySelectorAll(".calc__button");
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const functions = document.querySelectorAll(".function");
+const error = document.querySelector(".error");
 
 const updateScreen = () => {
   calcActive.textContent = currentNumber.join("");
@@ -29,6 +30,7 @@ const allClear = () => {
   updateResult();
   activeOperator = null;
   result = null;
+  error.textContent = "Calculator";
 };
 
 const clearVars = () => {
@@ -100,7 +102,7 @@ function multiply(x, y) {
 
 function divide(x, y) {
   if (y === 0) {
-    console.log("You can't do that!");
+    error.textContent = "You can't do that!";
   } else {
     return x / y;
   }

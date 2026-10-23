@@ -17,6 +17,7 @@ body {
   margin: 0;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -85,4 +86,9 @@ table {
 
 .selected {
   background-color: #4e3535;
+}
+
+.error {
+  font-size: 32px;
+  margin-bottom: 50px;
 }
