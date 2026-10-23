@@ -142,10 +142,12 @@ buttons.forEach((button) => {
           evaluate();
           activeEquation = [+result, activeOperator];
         }
-      } else if (button.id === "equal") {
+      } else if (button.id === "equal" && activeEquation.length == 2) {
         activeEquation.push(+currentNumber.join(""));
         activeOperator = null;
         evaluate();
+      } else {
+        console.log("Oops, something went wrong.");
       }
     }
 
