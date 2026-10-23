@@ -37,7 +37,6 @@ const clearVars = () => {
   currentNumber = [];
   previousNumber = [];
   activeEquation = [];
-  error.textContent = "Calculator";
 };
 
 const toDecimalPlace = () => {
