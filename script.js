@@ -119,10 +119,10 @@ function operate(operator, x, y) {
 }
 
 function fixDecimals(num) {
-  if (typeof num === "Number") {
-    const decimalCount = num.toString().split(".")[1].length;
-    if (decimalCount > 2) {
-      return (num = Math.round(num * 100) / 100);
+  if (typeof num === "number") {
+    const decimalCount = num.toString().split(".");
+    if (decimalCount.length > 1 && decimalCount[1].length > 2) {
+      return Math.round(num * 100) / 100;
     } else {
       return num;
     }
