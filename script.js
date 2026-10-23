@@ -83,6 +83,12 @@ const finishResult = () => {
 };
 
 const evaluate = () => {
+  if (activeEquation[1] === "divide" && activeEquation[2] === 0) {
+    currentNumber = [];
+    updateScreen;
+    activeEquation.pop();
+    return (error.textContent = "You can't do that!");
+  }
   operate(activeEquation[1], activeEquation[0], activeEquation[2]);
   finishResult();
   clearVars();
@@ -101,11 +107,7 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-  if (y === 0) {
-    error.textContent = "You can't do that!";
-  } else {
-    return x / y;
-  }
+  return x / y;
 }
 
 function operate(operator, x, y) {
