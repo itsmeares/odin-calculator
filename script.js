@@ -110,7 +110,7 @@ function operate(operator, x, y) {
   if (operator === "add") {
     return (result = fixDecimals(add(x, y)));
   } else if (operator === "subtract") {
-    return (result = fixDecmials(subtract(x, y)));
+    return (result = fixDecimals(subtract(x, y)));
   } else if (operator === "multiply") {
     return (result = fixDecimals(multiply(x, y)));
   } else if (operator === "divide") {
