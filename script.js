@@ -134,6 +134,12 @@ function fixDecimals(num) {
 }
 
 buttons.forEach((button) => {
+  const anyOperator =
+    button.id === "multiply" ||
+    button.id === "divide" ||
+    button.id === "add" ||
+    button.id === "subtract";
+
   button.addEventListener("click", () => {
     if (button.classList.contains("number")) {
       currentNumber.push(+button.textContent);
@@ -141,12 +147,7 @@ buttons.forEach((button) => {
     }
 
     if (button.classList.contains("operator")) {
-      if (
-        button.id === "multiply" ||
-        button.id === "divide" ||
-        button.id === "add" ||
-        button.id === "subtract"
-      ) {
+      if (anyOperator) {
         if (activeEquation.length < 2) {
           activeOperator = button.id;
           previousNumber = currentNumber;
