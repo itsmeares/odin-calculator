@@ -87,11 +87,13 @@ const evaluate = () => {
     currentNumber = [];
     updateScreen();
     activeEquation.pop();
-    return (error.textContent = "You can't do that!");
+    error.textContent = "You can't do that!";
+    return false;
   }
   operate(activeEquation[1], activeEquation[0], activeEquation[2]);
   finishResult();
   clearVars();
+  return true;
 };
 
 function add(x, y) {
@@ -166,8 +168,9 @@ buttons.forEach((button) => {
           } else if (currentNumber.length > 0) {
             activeEquation.push(+currentNumber.join(""));
             activeOperator = button.id;
-            evaluate();
-            activeEquation = [+result, activeOperator];
+            if (evaluate() === true) {
+              activeEquation = [+result, activeOperator];
+            }
           }
         }
       } else if (button.id === "equal" && activeEquation.length == 2) {
