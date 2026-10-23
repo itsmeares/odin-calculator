@@ -85,7 +85,7 @@ const finishResult = () => {
 const evaluate = () => {
   if (activeEquation[1] === "divide" && activeEquation[2] === 0) {
     currentNumber = [];
-    updateScreen;
+    updateScreen();
     activeEquation.pop();
     return (error.textContent = "You can't do that!");
   }
