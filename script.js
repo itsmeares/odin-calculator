@@ -104,14 +104,23 @@ function divide(x, y) {
 
 function operate(operator, x, y) {
   if (operator === "add") {
-    return (result = add(x, y).toFixed(2));
+    return (result = fixDecimals(add(x, y)));
   } else if (operator === "subtract") {
-    return (result = subtract(x, y).toFixed(2));
+    return (result = fixDecmials(subtract(x, y)));
   } else if (operator === "multiply") {
-    return (result = multiply(x, y).toFixed(2));
+    return (result = fixDecimals(multiply(x, y)));
   } else if (operator === "divide") {
-    return (result = divide(x, y).toFixed(2));
+    return (result = fixDecimals(divide(x, y)));
   } else return console.log("Something went wrong.");
+}
+
+function fixDecimals(num) {
+  const decimalCount = num.toString().split(".")[1].length;
+  if (decimalCount > 2) {
+    return (num = Math.round(num * 100) / 100);
+  } else {
+    return num;
+  }
 }
 
 buttons.forEach((button) => {
