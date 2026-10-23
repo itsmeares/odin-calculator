@@ -1,10 +1,15 @@
 let currentNumber = [];
 let previousNumber = [];
-
 let activeEquation = [];
 let activeOperator = null;
-
 let result = null;
+
+const calcActive = document.querySelector(".calc__active");
+const calcResult = document.querySelector(".calc__result");
+const buttons = document.querySelectorAll(".calc__button");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const functions = document.querySelectorAll(".function");
 
 const updateScreen = () => {
   calcActive.textContent = currentNumber.join("");
@@ -34,12 +39,32 @@ const toDecimalPlace = () => {
 };
 
 const updateResult = () => {
-  calcResult.textContent = `${activeEquation[0]} ${activeEquation[1]}`;
+  if (activeEquation[1] === "add") {
+    calcResult.textContent = `${activeEquation[0]} + `;
+  } else if (activeEquation[1] === "subtract") {
+    calcResult.textContent = `${activeEquation[0]} - `;
+  } else if (activeEquation[1] === "multiply") {
+    calcResult.textContent = `${activeEquation[0]} × `;
+  } else if (activeEquation[1] === "divide") {
+    calcResult.textContent = `${activeEquation[0]} ÷ `;
+  }
+};
+
+const finishResult = () => {
+  if (activeEquation[1] === "add") {
+    calcResult.textContent = `${activeEquation[0]} + ${activeEquation[2]} = ${result}`;
+  } else if (activeEquation[1] === "subtract") {
+    calcResult.textContent = `${activeEquation[0]} - ${activeEquation[2]} = ${result}`;
+  } else if (activeEquation[1] === "multiply") {
+    calcResult.textContent = `${activeEquation[0]} × ${activeEquation[2]} = ${result}`;
+  } else if (activeEquation[1] === "divide") {
+    calcResult.textContent = `${activeEquation[0]} ÷ ${activeEquation[2]} = ${result}`;
+  }
 };
 
 const evaluate = () => {
   operate(activeEquation[1], activeEquation[0], activeEquation[2]);
-  calcResult.textContent = `${activeEquation[0]} ${activeEquation[1]} ${activeEquation[2]} = ${result}`;
+  finishResult();
   calcActive.textContent = result;
 
   currentNumber = [];
@@ -50,13 +75,6 @@ const evaluate = () => {
 
   result = null;
 };
-
-const calcActive = document.querySelector(".calc__active");
-const calcResult = document.querySelector(".calc__result");
-const buttons = document.querySelectorAll(".calc__button");
-const numbers = document.querySelectorAll(".number");
-const operators = document.querySelectorAll(".operator");
-const functions = document.querySelectorAll(".function");
 
 function add(x, y) {
   return x + y;
