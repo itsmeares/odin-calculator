@@ -99,7 +99,11 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-  return x / y;
+  if (y === 0) {
+    console.log("You can't do that!");
+  } else {
+    return x / y;
+  }
 }
 
 function operate(operator, x, y) {
@@ -115,11 +119,15 @@ function operate(operator, x, y) {
 }
 
 function fixDecimals(num) {
-  const decimalCount = num.toString().split(".")[1].length;
-  if (decimalCount > 2) {
-    return (num = Math.round(num * 100) / 100);
+  if (typeof num === "Number") {
+    const decimalCount = num.toString().split(".")[1].length;
+    if (decimalCount > 2) {
+      return (num = Math.round(num * 100) / 100);
+    } else {
+      return num;
+    }
   } else {
-    return num;
+    console.log("You weirdo...");
   }
 }
 
