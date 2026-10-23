@@ -24,10 +24,17 @@ const changeSymbol = () => {
 };
 
 const allClear = () => {
+  clearVars();
+  updateScreen();
+  updateResult();
+};
+
+const clearVars = () => {
   currentNumber = [];
   previousNumber = [];
-  updateScreen();
-  calcResult.textContent = "";
+  activeEquation = [];
+  activeOperator = null;
+  result = null;
 };
 
 const toDecimalPlace = () => {
@@ -42,41 +49,41 @@ const toDecimalPlace = () => {
 };
 
 const updateResult = () => {
-  if (activeEquation[1] === "add") {
-    calcResult.textContent = `${activeEquation[0]} + `;
-  } else if (activeEquation[1] === "subtract") {
-    calcResult.textContent = `${activeEquation[0]} - `;
-  } else if (activeEquation[1] === "multiply") {
-    calcResult.textContent = `${activeEquation[0]} × `;
-  } else if (activeEquation[1] === "divide") {
-    calcResult.textContent = `${activeEquation[0]} ÷ `;
+  if (activeEquation.length > 1) {
+    if (activeEquation[1] === "add") {
+      calcResult.textContent = `${activeEquation[0]} + `;
+    } else if (activeEquation[1] === "subtract") {
+      calcResult.textContent = `${activeEquation[0]} - `;
+    } else if (activeEquation[1] === "multiply") {
+      calcResult.textContent = `${activeEquation[0]} × `;
+    } else if (activeEquation[1] === "divide") {
+      calcResult.textContent = `${activeEquation[0]} ÷ `;
+    }
+  } else {
+    calcResult.textContent = "";
   }
 };
 
 const finishResult = () => {
   if (activeEquation[1] === "add") {
     calcResult.textContent = `${activeEquation[0]} + ${activeEquation[2]} = ${result}`;
+    calcActive.textContent = result;
   } else if (activeEquation[1] === "subtract") {
     calcResult.textContent = `${activeEquation[0]} - ${activeEquation[2]} = ${result}`;
+    calcActive.textContent = result;
   } else if (activeEquation[1] === "multiply") {
     calcResult.textContent = `${activeEquation[0]} × ${activeEquation[2]} = ${result}`;
+    calcActive.textContent = result;
   } else if (activeEquation[1] === "divide") {
     calcResult.textContent = `${activeEquation[0]} ÷ ${activeEquation[2]} = ${result}`;
+    calcActive.textContent = result;
   }
 };
 
 const evaluate = () => {
   operate(activeEquation[1], activeEquation[0], activeEquation[2]);
   finishResult();
-  calcActive.textContent = result;
-
-  currentNumber = [];
-  previousNumber = [];
-
-  activeEquation = [];
-  activeOperator = null;
-
-  result = null;
+  clearVars();
 };
 
 function add(x, y) {
