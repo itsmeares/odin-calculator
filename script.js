@@ -34,7 +34,10 @@ const toDecimalPlace = () => {
   if (!currentNumber.includes(".")) {
     currentNumber.push(".");
   } else if (currentNumber.includes(".")) {
-    currentNumber.pop();
+    currentNumber.splice(
+      currentNumber.findIndex((e) => e === "."),
+      1,
+    );
   }
 };
 
