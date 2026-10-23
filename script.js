@@ -27,14 +27,14 @@ const allClear = () => {
   clearVars();
   updateScreen();
   updateResult();
+  activeOperator = null;
+  result = null;
 };
 
 const clearVars = () => {
   currentNumber = [];
   previousNumber = [];
   activeEquation = [];
-  activeOperator = null;
-  result = null;
 };
 
 const toDecimalPlace = () => {
@@ -138,10 +138,13 @@ buttons.forEach((button) => {
           updateResult();
         } else if (activeEquation.length == 2) {
           activeEquation.push(+currentNumber.join(""));
+          activeOperator = button.id;
           evaluate();
+          activeEquation = [+result, activeOperator];
         }
       } else if (button.id === "equal") {
         activeEquation.push(+currentNumber.join(""));
+        activeOperator = null;
         evaluate();
       }
     }
