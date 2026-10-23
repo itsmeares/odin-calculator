@@ -10,7 +10,7 @@ The last project of foundations course in The Odin Project!
   - enter number 12
   - enter operator +
   - enter number 7
-  - enter second operator (-), at this point it should evaluate the inital pair (12 + 7), then display the result 19. 
+  - enter second operator (-), at this point it should evaluate the inital pair (12 + 7), then display the result 19.
   - enter number 1
   - enter another operator or execute (=), at this point it should use the previous result (19) as the first num, the operator (-) and the new number (1) to calculate "19 - 1" then show result "18". ex (online calc)[https://www.calculatorsoup.com/calculators/math/basic.php]
 

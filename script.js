@@ -104,13 +104,13 @@ function divide(x, y) {
 
 function operate(operator, x, y) {
   if (operator === "add") {
-    return (result = add(x, y));
+    return (result = add(x, y).toFixed(2));
   } else if (operator === "subtract") {
-    return (result = subtract(x, y));
+    return (result = subtract(x, y).toFixed(2));
   } else if (operator === "multiply") {
-    return (result = multiply(x, y));
+    return (result = multiply(x, y).toFixed(2));
   } else if (operator === "divide") {
-    return (result = divide(x, y));
+    return (result = divide(x, y).toFixed(2));
   } else return console.log("Something went wrong.");
 }
 
