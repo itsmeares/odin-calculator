@@ -37,6 +37,7 @@ const clearVars = () => {
   currentNumber = [];
   previousNumber = [];
   activeEquation = [];
+  error.textContent = "Calculator";
 };
 
 const toDecimalPlace = () => {
@@ -157,15 +158,23 @@ buttons.forEach((button) => {
           updateScreen();
           updateResult();
         } else if (activeEquation.length == 2) {
-          activeEquation.push(+currentNumber.join(""));
-          activeOperator = button.id;
-          evaluate();
-          activeEquation = [+result, activeOperator];
+          if (currentNumber.length === 0) {
+            return (error.textContent = "Enter an operand.");
+          } else if (currentNumber.length > 0) {
+            activeEquation.push(+currentNumber.join(""));
+            activeOperator = button.id;
+            evaluate();
+            activeEquation = [+result, activeOperator];
+          }
         }
       } else if (button.id === "equal" && activeEquation.length == 2) {
-        activeEquation.push(+currentNumber.join(""));
-        activeOperator = null;
-        evaluate();
+        if (currentNumber.length === 0) {
+          return (error.textContent = "Enter an operand.");
+        } else if (currentNumber.length > 0) {
+          activeEquation.push(+currentNumber.join(""));
+          activeOperator = null;
+          evaluate();
+        }
       } else {
         console.log("Oops, something went wrong.");
       }
